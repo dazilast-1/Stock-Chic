@@ -150,7 +150,7 @@ const UsersManagement: React.FC = () => {
 
     setUsers([...users, newUser]);
     setShowAddModal(false);
-    setFormData({ nom: '', prenom: '', email: '', telephone: '', password: '', role: 'vendeur' });
+    setFormData({ nom: '', prenom: '', email: '', telephone: '', password: '', role: 'vendeur', profile_photo: '' });
     alert('Utilisateur ajouté avec succès !');
   };
 
@@ -188,7 +188,7 @@ const UsersManagement: React.FC = () => {
 
     setShowEditModal(false);
     setSelectedUser(null);
-    setFormData({ nom: '', prenom: '', email: '', telephone: '', password: '', role: 'vendeur' });
+    setFormData({ nom: '', prenom: '', email: '', telephone: '', password: '', role: 'vendeur', profile_photo: '' });
     alert('Utilisateur modifié avec succès !');
   };
 

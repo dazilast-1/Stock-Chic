@@ -441,10 +441,10 @@ const NewSale: React.FC = () => {
             {/* Bouton de validation */}
             <button
               type="submit"
-              disabled={cart.length === 0 || !montantPaye || parseFloat(montantPaye) < montantTotal || createVenteMutation.isPending}
+              disabled={cart.length === 0 || !montantPaye || parseFloat(montantPaye) < montantTotal || createVenteMutation.isLoading}
               className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
             >
-              {createVenteMutation.isPending ? (
+              {createVenteMutation.isLoading ? (
                 <>
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                   Enregistrement...

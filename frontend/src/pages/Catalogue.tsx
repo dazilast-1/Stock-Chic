@@ -3,20 +3,11 @@ import { Link } from 'react-router-dom';
 import { 
   Plus, 
   Search, 
-  Filter, 
   Package, 
   Edit, 
   Trash2,
   Eye,
-  AlertTriangle,
-  ShoppingCart,
-  Star,
-  Heart,
-  Share2,
-  TrendingUp,
-  Tag,
-  Palette,
-  Zap
+  AlertTriangle
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import apiClient from '../api/client';
@@ -202,7 +193,7 @@ const Catalogue: React.FC = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center bg-gray-100 rounded-lg p-1">
                 <Button
-                  variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                  variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
                   size="sm"
                   onClick={() => setViewMode('grid')}
                   className="px-3"
@@ -210,7 +201,7 @@ const Catalogue: React.FC = () => {
                   📱
                 </Button>
                 <Button
-                  variant={viewMode === 'list' ? 'default' : 'ghost'}
+                  variant={viewMode === 'list' ? 'secondary' : 'ghost'}
                   size="sm"
                   onClick={() => setViewMode('list')}
                   className="px-3"
@@ -379,7 +370,7 @@ const Catalogue: React.FC = () => {
                     return (
                       <Button
                         key={pageNum}
-                        variant={currentPage === pageNum ? 'default' : 'outline'}
+                        variant={currentPage === pageNum ? 'secondary' : 'outline'}
                         size="sm"
                         onClick={() => setCurrentPage(pageNum)}
                         className={currentPage === pageNum ? 'bg-blue-600' : 'bg-white/80 hover:bg-blue-50'}
