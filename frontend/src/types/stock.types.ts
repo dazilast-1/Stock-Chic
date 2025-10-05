@@ -30,6 +30,28 @@ export interface StockAlert {
   };
 }
 
+export interface Declinaison {
+  id: string;
+  articleId: string;
+  taille?: string;
+  couleur?: string;
+  prix?: number;
+  stock?: number;
+}
+
+export interface ArticleWithDeclinaisons {
+  id: string;
+  nom: string;
+  reference: string;
+  description?: string;
+  prix: number;
+  stock: number;
+  categorie?: string;
+  fournisseur?: string;
+  photo?: string;
+  declinaisons?: Declinaison[];
+}
+
 export interface CartItem {
   id: string;
   articleId: string;
