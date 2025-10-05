@@ -17,6 +17,9 @@
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "FRONTEND_URL": "https://teal-flan-8621ec.netlify.app",
+    "DEMO_MODE": "true",
+    "JWT_SECRET": "0e0ajDvk3iYdlwn28BfagQFPMWvzBE/cyDtnOy3uhWVOIn4+ZMM6ENN4sAkFoJ0pQGj0PtSS1qApSPFnaGPJyg=="
   }
 }

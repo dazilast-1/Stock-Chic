@@ -19,9 +19,17 @@ const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5177';
 // Middleware de sécurité
 app.use(helmet());
 
-// Configuration CORS
+// Configuration CORS - Accepter les origines de développement et de production
 const corsOptions = {
-  origin: FRONTEND_URL,
+  origin: [
+    FRONTEND_URL,
+    'https://teal-flan-8621ec.netlify.app',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:5175',
+    'http://localhost:5176',
+    'http://localhost:5177'
+  ],
   credentials: true,
   optionsSuccessStatus: 200
 };
