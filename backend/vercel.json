@@ -2,10 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/server.ts",
+      "src": "api/index.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["src/**"],
+        "includeFiles": ["src/**", "api/**"],
         "maxDuration": 30
       }
     }
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/server.ts"
+      "dest": "api/index.js"
     }
   ],
   "env": {
