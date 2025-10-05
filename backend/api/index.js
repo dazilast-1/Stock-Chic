@@ -1,19 +1,7 @@
-// Point d'entrée pour Vercel
-const { createServer } = require('http');
-const { parse } = require('url');
-const next = require('next');
-
-const dev = process.env.NODE_ENV !== 'production';
-const hostname = 'localhost';
-const port = process.env.PORT || 3000;
-
-// Import du serveur Express
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-
-// Charger les variables d'environnement
-require('dotenv').config();
+// Point d'entrée simple pour Vercel
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 
 const app = express();
 
@@ -50,19 +38,50 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Routes de démo (mode démo activé)
-if (process.env.DEMO_MODE === 'true') {
-  // Import des routes de démo
-  const demoRoutes = require('../src/routes/demo.routes');
-  app.use('/api', demoRoutes);
-} else {
-  // Import des routes de production
-  const authRoutes = require('../src/routes/auth.routes');
-  const articleRoutes = require('../src/routes/article.routes');
+// Données de démo directement intégrées
+const demoUsers = [
+  {
+    id: '1',
+    nom: 'Admin',
+    prenom: 'Stock',
+    email: 'admin@stockchic.com',
+    role: 'gerant',
+    telephone: '+33 1 23 45 67 89',
+    profile_photo: '/images/admin.jpg'
+  }
+];
+
+// Route de connexion démo
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body;
   
-  app.use('/api/auth', authRoutes);
-  app.use('/api/articles', articleRoutes);
-}
+  if (email === 'admin@stockchic.com' && password === 'admin123') {
+    const user = demoUsers[0];
+    const token = 'demo-token-' + Date.now();
+    
+    res.json({
+      success: true,
+      data: {
+        user,
+        token
+      },
+      message: 'Connexion réussie'
+    });
+  } else {
+    res.status(401).json({
+      success: false,
+      error: 'Identifiants incorrects'
+    });
+  }
+});
+
+// Route profil utilisateur
+app.get('/api/auth/me', (req, res) => {
+  res.json({
+    success: true,
+    data: demoUsers[0]
+  });
+});
 
 // Route par défaut
 app.get('*', (req, res) => {
@@ -85,4 +104,4 @@ app.use((err, req, res, next) => {
 });
 
 // Export pour Vercel
-module.exports = app;
+export default app;
